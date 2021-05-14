@@ -20,13 +20,14 @@ public class User {
 	private String country;
 	private String city;
 	private String cardId;
+	private Review review;
 	
 	public User() {	
 		
 	}
-	
+
 	public User(String firstName, String lastName, String sexe, String emailAddress, String phoneNumber, String country,
-			String city, String cardId) {
+			String city, String cardId, Review review) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -36,6 +37,7 @@ public class User {
 		this.country = country;
 		this.city = city;
 		this.cardId = cardId;
+		this.review = review;
 	}
 
 	public Long getUserId() {
@@ -109,6 +111,13 @@ public class User {
 	public void setCardId(String cardId) {
 		this.cardId = cardId;
 	}
-	
+
+	public Review getReview() {
+		return review;
+	}
+
+	public void setReview(Review review) {
+		this.review = review;
+	}
 	
 }

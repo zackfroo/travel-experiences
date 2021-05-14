@@ -18,13 +18,14 @@ public class Activity {
 	private Float price;
 	private User user;
 	private Category category;
+	private Review review;
 	
 	public Activity() {
 		
 	}
-	
+
 	public Activity(String title, String description, String country, String city, Float price, User user,
-			Category category) {
+			Category category, Review review) {
 		super();
 		this.title = title;
 		this.description = description;
@@ -33,6 +34,7 @@ public class Activity {
 		this.price = price;
 		this.user = user;
 		this.category = category;
+		this.review = review;
 	}
 
 	public Long getActivityId() {
@@ -97,6 +99,14 @@ public class Activity {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public Review getReview() {
+		return review;
+	}
+
+	public void setReview(Review review) {
+		this.review = review;
 	}
 	
 	
