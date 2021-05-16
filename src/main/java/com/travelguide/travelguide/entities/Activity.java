@@ -16,25 +16,18 @@ public class Activity {
 	private String country;
 	private String city;
 	private Float price;
-	private User user;
-	private Category category;
-	private Review review;
 	
 	public Activity() {
 		
 	}
 
-	public Activity(String title, String description, String country, String city, Float price, User user,
-			Category category, Review review) {
+	public Activity(String title, String description, String country, String city, Float price) {
 		super();
 		this.title = title;
 		this.description = description;
 		this.country = country;
 		this.city = city;
 		this.price = price;
-		this.user = user;
-		this.category = category;
-		this.review = review;
 	}
 
 	public Long getActivityId() {
@@ -83,30 +76,6 @@ public class Activity {
 
 	public void setPrice(Float price) {
 		this.price = price;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
-	public Review getReview() {
-		return review;
-	}
-
-	public void setReview(Review review) {
-		this.review = review;
 	}
 	
 	

@@ -1,11 +1,11 @@
-package com.travelguide.travelguide;
+package com.travelguide.travelguide.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class DefaultController {
-    @GetMapping(value="/")
+    @RequestMapping("/")
     public String index() {
         return "default/index";
     }

@@ -12,16 +12,14 @@ public class Category {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long categoryId;
 	private String categoryName;
-	private Activity activity;
 	
 	public Category() {
 		
 	}
 	
-	public Category(String categoryName, Activity activity) {
+	public Category(String categoryName) {
 		super();
 		this.categoryName = categoryName;
-		this.activity = activity;
 	}
 
 	public Long getCategoryId() {
@@ -38,14 +36,6 @@ public class Category {
 
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
-	}
-
-	public Activity getActivity() {
-		return activity;
-	}
-
-	public void setActivity(Activity activity) {
-		this.activity = activity;
 	}
 	
 	
