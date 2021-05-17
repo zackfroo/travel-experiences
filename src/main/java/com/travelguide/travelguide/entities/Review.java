@@ -11,19 +11,15 @@ public class Review {
 	private Long reviewId;
 	private float note;
 	private String description;
-	private User user;
-	private Activity activity;
 	
 	public Review() {
 		
 	}
 	
-	public Review(float note, String description, User user, Activity activity) {
+	public Review(float note, String description) {
 		super();
 		this.note = note;
 		this.description = description;
-		this.user = user;
-		this.activity = activity;
 	}
 
 	public Long getReviewId() {
@@ -48,22 +44,6 @@ public class Review {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Activity getActivity() {
-		return activity;
-	}
-
-	public void setActivity(Activity activity) {
-		this.activity = activity;
 	}
 	
 	
