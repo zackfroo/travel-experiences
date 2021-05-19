@@ -44,6 +44,6 @@ public class ContactController {
 		
 		mailSender.send(message);
 		
-		return "default/message";
+		return "default/messageSubmitted";
 	}
 }
