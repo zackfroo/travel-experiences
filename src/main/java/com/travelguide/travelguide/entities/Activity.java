@@ -1,9 +1,16 @@
 package com.travelguide.travelguide.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Activity {
@@ -17,6 +24,20 @@ public class Activity {
 	private String city;
 	private Float price;
 	
+	@ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
+			fetch=FetchType.LAZY)
+	@JoinColumn(name="userId")
+	private User userActivity;
+	
+	@ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
+			fetch=FetchType.LAZY)
+	
+	@JoinColumn(name="categoryId")
+	private Category categoryActivity;
+
+	@OneToMany(mappedBy="activityReview")
+	private List<Review> activityReviews;
+	
 	public Activity() {
 		
 	}
@@ -28,6 +49,14 @@ public class Activity {
 		this.country = country;
 		this.city = city;
 		this.price = price;
+	}
+
+	public Category getCategoryActivity() {
+		return categoryActivity;
+	}
+
+	public void setCategoryActivity(Category categoryActivity) {
+		this.categoryActivity = categoryActivity;
 	}
 
 	public Long getActivityId() {
@@ -77,6 +106,24 @@ public class Activity {
 	public void setPrice(Float price) {
 		this.price = price;
 	}
+
+	public User getUserActivity() {
+		return userActivity;
+	}
+
+	public void setUserActivity(User userActivity) {
+		this.userActivity = userActivity;
+	}
+
+	public List<Review> getActivityReviews() {
+		return activityReviews;
+	}
+
+	public void setActivityReviews(List<Review> activityReviews) {
+		this.activityReviews = activityReviews;
+	}
+
+	
 	
 	
 }

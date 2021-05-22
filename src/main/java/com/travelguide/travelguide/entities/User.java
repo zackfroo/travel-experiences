@@ -1,9 +1,13 @@
 package com.travelguide.travelguide.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 
 @Entity
 public class User {
@@ -20,6 +24,12 @@ public class User {
 	private String country;
 	private String city;
 	private String cardId;
+
+	@OneToMany(mappedBy="userReview")
+	private List<Review> userReviews;
+	
+	@OneToMany(mappedBy="userActivity")
+	private List<Activity> activities;
 	
 	public User() {	
 		
@@ -37,7 +47,9 @@ public class User {
 		this.city = city;
 		this.cardId = cardId;
 	}
-
+	
+	
+	
 	public Long getUserId() {
 		return userId;
 	}
@@ -109,5 +121,25 @@ public class User {
 	public void setCardId(String cardId) {
 		this.cardId = cardId;
 	}
+
+	
+
+	public List<Review> getUserReviews() {
+		return userReviews;
+	}
+
+	public void setUserReviews(List<Review> userReviews) {
+		this.userReviews = userReviews;
+	}
+
+	public List<Activity> getActivities() {
+		return activities;
+	}
+
+	public void setActivities(List<Activity> activities) {
+		this.activities = activities;
+	}
+	
+	
 	
 }
