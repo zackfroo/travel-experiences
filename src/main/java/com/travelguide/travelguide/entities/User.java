@@ -1,9 +1,13 @@
 package com.travelguide.travelguide.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 
 @Entity
 public class User {
@@ -20,14 +24,19 @@ public class User {
 	private String country;
 	private String city;
 	private String cardId;
-	private Review review;
+
+	@OneToMany(mappedBy="userReview")
+	private List<Review> userReviews;
+	
+	@OneToMany(mappedBy="userActivity")
+	private List<Activity> activities;
 	
 	public User() {	
 		
 	}
 
 	public User(String firstName, String lastName, String sexe, String emailAddress, String phoneNumber, String country,
-			String city, String cardId, Review review) {
+			String city, String cardId) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -37,9 +46,10 @@ public class User {
 		this.country = country;
 		this.city = city;
 		this.cardId = cardId;
-		this.review = review;
 	}
-
+	
+	
+	
 	public Long getUserId() {
 		return userId;
 	}
@@ -112,12 +122,24 @@ public class User {
 		this.cardId = cardId;
 	}
 
-	public Review getReview() {
-		return review;
+	
+
+	public List<Review> getUserReviews() {
+		return userReviews;
 	}
 
-	public void setReview(Review review) {
-		this.review = review;
+	public void setUserReviews(List<Review> userReviews) {
+		this.userReviews = userReviews;
 	}
+
+	public List<Activity> getActivities() {
+		return activities;
+	}
+
+	public void setActivities(List<Activity> activities) {
+		this.activities = activities;
+	}
+	
+	
 	
 }
