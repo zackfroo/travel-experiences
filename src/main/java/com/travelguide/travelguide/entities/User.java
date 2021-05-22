@@ -48,8 +48,6 @@ public class User {
 		this.cardId = cardId;
 	}
 	
-	
-	
 	public Long getUserId() {
 		return userId;
 	}
@@ -122,8 +120,6 @@ public class User {
 		this.cardId = cardId;
 	}
 
-	
-
 	public List<Review> getUserReviews() {
 		return userReviews;
 	}
@@ -139,7 +135,4 @@ public class User {
 	public void setActivities(List<Activity> activities) {
 		this.activities = activities;
 	}
-	
-	
-	
 }

@@ -77,6 +77,4 @@ public class Review {
 	public void setActivityReview(Activity activityReview) {
 		this.activityReview = activityReview;
 	}
-	
-	
 }

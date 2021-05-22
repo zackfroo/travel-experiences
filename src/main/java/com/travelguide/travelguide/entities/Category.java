@@ -27,7 +27,6 @@ public class Category {
 		super();
 		this.categoryName = categoryName;
 	}
-
 	
 	public List<Activity> getActivities() {
 		return activities;
@@ -52,6 +51,4 @@ public class Category {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-	
-	
 }

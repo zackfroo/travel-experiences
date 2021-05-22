@@ -122,8 +122,4 @@ public class Activity {
 	public void setActivityReviews(List<Review> activityReviews) {
 		this.activityReviews = activityReviews;
 	}
-
-	
-	
-	
 }
