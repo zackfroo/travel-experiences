@@ -35,7 +35,7 @@
 			<div class="form-group row">
 				<label for="sexe" class="col-sm-4 col-form-label">Sexe: </label>
 				<div class="col-sm-8">
-					<select name="sexe" id="sexe" th:field=${userObject.sexe}>
+					<select name="sexe" id="sexe" class="form-control" th:field=${userObject.sexe}>
 						 <option value="male">Male</option>
 						 <option value="female">Female</option>
 						 <option value="unspecified">Unspecified</option>
@@ -54,7 +54,7 @@
 			<div class="form-group row">
 				<label for="phoneNumber" class="col-sm-4 col-form-label">Phone number: </label>
 				<div class="col-sm-8">
-					<input type="tel" name="phoneNumber" placeholder="123-456-7890" 
+					<input type="tel" name="phoneNumber" class="form-control" placeholder="123-456-7890" 
 					pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" th:field=${userObject.phoneNumber} required>
 				</div>
 			</div>
