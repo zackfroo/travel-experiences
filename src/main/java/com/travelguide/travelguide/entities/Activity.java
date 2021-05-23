@@ -3,6 +3,7 @@ package com.travelguide.travelguide.entities;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,26 +19,31 @@ public class Activity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long activityId;
+	@Column(nullable = false) 
 	private String title;
+	@Column(nullable = false) 
 	private String description;
+	@Column(nullable = false) 
 	private String country;
+	@Column(nullable = false) 
 	private String city;
+	@Column(nullable = false) 
 	private Float price;
-	
+
 	@ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
 			fetch=FetchType.LAZY)
 	@JoinColumn(name="userId")
 	private User userActivity;
-	
+
 	@ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
 			fetch=FetchType.LAZY)
-	
+
 	@JoinColumn(name="categoryId")
 	private Category categoryActivity;
 
 	@OneToMany(mappedBy="activityReview")
 	private List<Review> activityReviews;
-	
+
 	public Activity() {
 		
 	}

@@ -2,6 +2,7 @@ package com.travelguide.travelguide.entities;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,13 +17,21 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	
 	private Long userId;
+	@Column(nullable = false) 
 	private String firstName;
+	@Column(nullable = false) 
 	private String lastName;
+	@Column(nullable = false) 
 	private String sexe;
+	@Column(nullable = false) 
 	private String emailAddress;
+	@Column(nullable = false) 
 	private String phoneNumber;
+	@Column(nullable = false) 
 	private String country;
+	@Column(nullable = false) 
 	private String city;
+	@Column(nullable = false) 
 	private String cardId;
 
 	@OneToMany(mappedBy="userReview")

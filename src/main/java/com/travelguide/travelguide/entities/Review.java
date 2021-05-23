@@ -1,6 +1,7 @@
 package com.travelguide.travelguide.entities;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,7 +16,9 @@ public class Review {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long reviewId;
+	@Column(nullable = false) 
 	private float note;
+	@Column(nullable = false) 
 	private String description;
 	
 	@ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
