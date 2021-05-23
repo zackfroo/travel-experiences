@@ -1,9 +1,19 @@
 package com.travelguide.travelguide.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+
 
 @Entity
 public class Activity {
@@ -11,30 +21,50 @@ public class Activity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long activityId;
+	@Column(nullable = false) 
 	private String title;
+	@Column(nullable = false) 
 	private String description;
+	@Column(nullable = false) 
 	private String country;
+	@Column(nullable = false) 
 	private String city;
+	@Column(nullable = false) 
 	private Float price;
-	private User user;
-	private Category category;
-	private Review review;
+	
+	@ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
+			fetch=FetchType.LAZY)
+	@JoinColumn(name="userId")
+	private User userActivity;
+	
+	@ManyToOne(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},
+			fetch=FetchType.LAZY)
+	
+	@JoinColumn(name="categoryId")
+	private Category categoryActivity;
+
+	@OneToMany(mappedBy="activityReview")
+	private List<Review> activityReviews;
 	
 	public Activity() {
 		
 	}
 
-	public Activity(String title, String description, String country, String city, Float price, User user,
-			Category category, Review review) {
+	public Activity(String title, String description, String country, String city, Float price) {
 		super();
 		this.title = title;
 		this.description = description;
 		this.country = country;
 		this.city = city;
 		this.price = price;
-		this.user = user;
-		this.category = category;
-		this.review = review;
+	}
+
+	public Category getCategoryActivity() {
+		return categoryActivity;
+	}
+
+	public void setCategoryActivity(Category categoryActivity) {
+		this.categoryActivity = categoryActivity;
 	}
 
 	public Long getActivityId() {
@@ -85,29 +115,23 @@ public class Activity {
 		this.price = price;
 	}
 
-	public User getUser() {
-		return user;
+	public User getUserActivity() {
+		return userActivity;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserActivity(User userActivity) {
+		this.userActivity = userActivity;
 	}
 
-	public Category getCategory() {
-		return category;
+	public List<Review> getActivityReviews() {
+		return activityReviews;
 	}
 
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setActivityReviews(List<Review> activityReviews) {
+		this.activityReviews = activityReviews;
 	}
 
-	public Review getReview() {
-		return review;
-	}
-
-	public void setReview(Review review) {
-		this.review = review;
-	}
+	
 	
 	
 }

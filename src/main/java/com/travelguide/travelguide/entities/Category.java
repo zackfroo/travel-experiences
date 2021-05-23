@@ -1,9 +1,15 @@
 package com.travelguide.travelguide.entities;
 
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+
 
 @Entity
 public class Category {
@@ -11,17 +17,28 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long categoryId;
+	@Column(nullable = false) 
 	private String categoryName;
-	private Activity activity;
+
+	@OneToMany(mappedBy="categoryActivity")
+	private List<Activity> activities;
 	
 	public Category() {
 		
 	}
 	
-	public Category(String categoryName, Activity activity) {
+	public Category(String categoryName) {
 		super();
 		this.categoryName = categoryName;
-		this.activity = activity;
+	}
+
+	
+	public List<Activity> getActivities() {
+		return activities;
+	}
+
+	public void setActivities(List<Activity> activities) {
+		this.activities = activities;
 	}
 
 	public Long getCategoryId() {
@@ -38,14 +55,6 @@ public class Category {
 
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
-	}
-
-	public Activity getActivity() {
-		return activity;
-	}
-
-	public void setActivity(Activity activity) {
-		this.activity = activity;
 	}
 	
 	
