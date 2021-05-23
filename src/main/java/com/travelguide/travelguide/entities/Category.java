@@ -2,6 +2,7 @@ package com.travelguide.travelguide.entities;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +15,7 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long categoryId;
+	@Column(nullable = false) 
 	private String categoryName;
 
 	@OneToMany(mappedBy="categoryActivity")
