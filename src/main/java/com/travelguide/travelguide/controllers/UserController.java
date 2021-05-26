@@ -27,7 +27,11 @@ public class UserController {
 	
 	@PostMapping(value="/save-user")
 	public String registerUser(Model model, User aUser) {
+		try {
 		userRepo.save(aUser);
-		return "default/registrationSubmitted";
+		return "default/registrationSubmitted";	
+		} catch (Exception e) {
+			return "default/registrationNotSubmitted";	
+		}
 	}
 }

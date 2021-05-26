@@ -23,15 +23,15 @@ public class User {
 	private String lastName;
 	@Column(nullable = false) 
 	private String sexe;
-	@Column(nullable = false) 
+	@Column(nullable = false, unique=true) 
 	private String emailAddress;
-	@Column(nullable = false) 
+	@Column(nullable = false, unique=true)
 	private String phoneNumber;
 	@Column(nullable = false) 
 	private String country;
 	@Column(nullable = false) 
 	private String city;
-	@Column(nullable = false) 
+	@Column(nullable = false, unique=true) 
 	private String cardId;
 
 	@OneToMany(mappedBy="userReview")

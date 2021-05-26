@@ -19,9 +19,9 @@ public class Activity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long activityId;
-	@Column(nullable = false) 
+	@Column(nullable = false, unique=true)
 	private String title;
-	@Column(nullable = false) 
+	@Column(nullable = false, unique=true) 
 	private String description;
 	@Column(nullable = false) 
 	private String country;
