@@ -2,7 +2,8 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="layouts :: head"></head>
+<head th:replace="layouts :: head">
+</head>
 
 <body>
 
@@ -13,88 +14,102 @@
 	</div>
 	
 	<div>
-		<form action= "/register/save-user" method="POST" style="max-width: 600px; margin: 0 auto;"
-		th:object=${userObject}>
+		<form action="/register/save-user" method="POST" onsubmit="return validData(event)" name="form" 
+		style="max-width: 600px; margin: 0 auto;" th:object=${userObject}>
 		
 			<div class="form-group row">
 				<label for="firstName" class="col-sm-4 col-form-label">First name: </label>
 				<div class="col-sm-8">
-					<input type="text" name="firstName" class="form-control" placeholder="First name" minlength="1" maxlength="45"
-					th:field=${userObject.firstName} required>
+					<input type="text" name="firstName" id="firstName" class="form-control" placeholder="First name" minlength="1" maxlength="45"
+					th:field=${userObject.firstName}>
+					<span id="erreur_First_Name" style="color: red;"></span>
 				</div>
 			</div>
 		
 			<div class="form-group row">
 				<label for="lastName" class="col-sm-4 col-form-label">Last name: </label>
 				<div class="col-sm-8">
-					<input type="text" name="lastName" class="form-control" placeholder="Last name" minlength="1" maxlength="45"
-					th:field=${userObject.lastName} required>
+					<input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last name" minlength="1" maxlength="45"
+					th:field=${userObject.lastName}>
+					<span id="erreur_Last_Name" style="color: red;"></span>
 				</div>
 			</div>
 		
 			<div class="form-group row">
-				<label for="sexe" class="col-sm-4 col-form-label">Sexe: </label>
+				<label for="sexe" class="col-sm-4 col-form-label">Gender: </label>
 				<div class="col-sm-8">
 					<select name="sexe" id="sexe" class="form-control" th:field=${userObject.sexe}>
+					<option value="Select an Option" selected>
+				    	Select an Option
+				    </option>
 						 <option value="male">Male</option>
 						 <option value="female">Female</option>
 						 <option value="unspecified">Unspecified</option>
 					</select>
+					<span id="erreur_Sexe" style="color: red;"></span>
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label for="email" class="col-sm-4 col-form-label">Email: </label>
 				<div class="col-sm-8">
-					<input type="email" name="email" class="form-control" placeholder="Email"
-					 th:field=${userObject.emailAddress} required>
+					<input type="email" name="email" id="email" class="form-control" placeholder="Email"
+					 th:field=${userObject.emailAddress}>
+					 <span id="erreur_Email_Address" style="color: red;"></span>
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label for="phoneNumber" class="col-sm-4 col-form-label">Phone number: </label>
 				<div class="col-sm-8">
-					<input type="tel" name="phoneNumber" class="form-control" placeholder="123-456-7890" 
-					pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" th:field=${userObject.phoneNumber} required>
+					<input type="tel" name="phoneNumber" id="phoneNumber" class="form-control" placeholder="123-456-7890" 
+					pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" th:field=${userObject.phoneNumber}>
+					<span id="erreur_Phone_Number" style="color: red;"></span>
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label for="country" class="col-sm-4 col-form-label">Country: </label>
 				<div class="col-sm-8">
-					<select th:replace="layouts :: countries" th:field=${userObject.country}></select>
+					<select name="country" id="country" th:replace="layouts :: countries" th:field=${userObject.country}></select>
+					<span id="erreur_Country" style="color: red;"></span>
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label for="city" class="col-sm-4 col-form-label">City: </label>
 				<div class="col-sm-8">
-					<input type="text" name="city" class="form-control" placeholder="City"
-					th:field=${userObject.city} required>
+					<input type="text" name="city" id="city" class="form-control" placeholder="City"
+					th:field=${userObject.city}>
+					<span id="erreur_City" style="color: red;"></span>
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label for="cardId" class="col-sm-4 col-form-label">ID Card: </label>
 				<div class="col-sm-8">
-					<input type="text" name="cardId" class="form-control" placeholder="ID Card"
-					th:field=${userObject.cardId} required>
+					<input type="text" name="cardId" id="cardId" class="form-control" placeholder="ID Card"
+					th:field=${userObject.cardId}>
+					<span id="erreur_Id_Card" style="color: red;"></span>
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label for="password" class="col-sm-4 col-form-label">Password: </label>
 				<div class="col-sm-8">
-					<input type="password" name="password" class="form-control" placeholder="Password" minlength="12"
-					required>
+					<input type="password" name="password" id="password" class="form-control" 
+					placeholder="Password" minlength="8">
+					<h6 style="color:gray;">Must contain at least one number, one lower case, <br>one upper case and at least 8 characters <br></h6>
+					<span id="erreur_Password" style="color: red;"></span>
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label for="repeatPassword" class="col-sm-4 col-form-label">Repeat password: </label>
 				<div class="col-sm-8">
-					<input type="password" name="repeatPassword" class="form-control" placeholder="Repeat password"
-					required>
+					<input type="password" name="repeatPassword" id="repeatPassword" class="form-control" 
+					placeholder="Repeat password">
+					<span id="erreur_Repeat_Password" style="color: red;"></span>
 				</div>
 			</div>
 			
@@ -106,6 +121,7 @@
 		</form>
 	</div>
 	
+	<script type="text/javascript" th:src="@{js/validForms.js}"></script>
 </body>
 
 </html>

@@ -13,36 +13,42 @@
 	</div>
 	
 	<div>
-		<form th:action= "@{/contact/send}" method="POST" style="max-width: 600px; margin: 0 auto;">
+		<form th:action= "@{/contact/send}" method="POST" onsubmit="return validContact(event)" name="contact"
+		style="max-width: 600px; margin: 0 auto;" 
+		>
 		
 			<div class="form-group row">
 				<label for="fullName" class="col-sm-4 col-form-label">Full name: </label>
 				<div class="col-sm-8">
-					<input type="text" name="fullName" class="form-control" placeholder="Full name" minlength="3" maxlength="45"
-					required> <!-- th:field=${contact.firstName}  -->
+					<input type="text" name="fullName" id="fullName" class="form-control" 
+					placeholder="Full name" minlength="3" maxlength="45">
+					<span id="erreur_Full_Name" style="color: red;"></span>
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label for="email" class="col-sm-4 col-form-label">Email: </label>
 				<div class="col-sm-8">
-					<input type="email" name="email" class="form-control" placeholder="Email" maxlength="45" required>
+					<input type="email" name="email" id="email" class="form-control" placeholder="Email">
+					<span id="erreur_Email" style="color: red;"></span>
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label for="subject" class="col-sm-4 col-form-label">Subject: </label>
 				<div class="col-sm-8">
-					<input type="text" name="subject" class="form-control" placeholder="subject" minlength="15"  maxlength="250"
-					required>
+					<input type="text" name="subject" id="subject" class="form-control" 
+					placeholder="subject" maxlength="77">
+					<span id="erreur_Subject" style="color: red;"></span>
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label for="content" class="col-sm-4 col-form-label">Message: </label>
 				<div class="col-sm-8">
-					<textarea rows="5" name="content" class="form-control" placeholder="Your message" minlength="15"  maxlength="250"
-					required></textarea>
+					<textarea rows="5" name="content" id="content" class="form-control" 
+					placeholder="Your message" minlength="150"  maxlength="1000"></textarea>
+					<span id="erreur_Content" style="color: red;"></span>
 				</div>
 			</div>
 			
@@ -53,6 +59,8 @@
 		
 		</form>
 	</div>
+	
+	<script type="text/javascript" th:src="@{js/validForms.js}"></script>
 	
 </body>
 
