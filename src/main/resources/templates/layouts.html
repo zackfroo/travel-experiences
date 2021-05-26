@@ -10,6 +10,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <link rel="stylesheet" th:href="@{/css/formmating.css}">
 
 </head>
 <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -37,6 +39,9 @@
 </nav>
 
     <select id="country" name="country" class="form-control" th:fragment="countries" >
+       <option value="Select a country" selected>
+				    	Select a country
+	   </option>
        <option value="Afganistan">Afghanistan</option>
        <option value="Albania">Albania</option>
        <option value="Algeria">Algeria</option>
