@@ -33,6 +33,9 @@ public class User {
 	private String city;
 	@Column(nullable = false, unique=true) 
 	private String cardId;
+	@Column(nullable = false) 
+	private String password;
+	
 
 	@OneToMany(mappedBy="userReview")
 	private List<Review> userReviews;
@@ -45,7 +48,7 @@ public class User {
 	}
 
 	public User(String firstName, String lastName, String sexe, String emailAddress, String phoneNumber, String country,
-			String city, String cardId) {
+			String city, String cardId, String password) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -55,6 +58,7 @@ public class User {
 		this.country = country;
 		this.city = city;
 		this.cardId = cardId;
+		this.password = password;
 	}
 	
 	public Long getUserId() {
@@ -127,6 +131,14 @@ public class User {
 
 	public void setCardId(String cardId) {
 		this.cardId = cardId;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public List<Review> getUserReviews() {

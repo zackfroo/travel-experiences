@@ -1,6 +1,7 @@
 package com.travelguide.travelguide.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +28,12 @@ public class UserController {
 	
 	@PostMapping(value="/save-user")
 	public String registerUser(Model model, User aUser) {
+
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String password = aUser.getPassword();
+		String hashedPassword = passwordEncoder.encode(password);
+		aUser.setPassword(hashedPassword);
+		
 		try {
 		userRepo.save(aUser);
 		return "default/registrationSubmitted";	
