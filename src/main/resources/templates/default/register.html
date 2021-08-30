@@ -14,7 +14,7 @@
 	</div>
 	
 	<div>
-		<form action="/register/save-user" method="POST" onsubmit="return validData(event)" name="form" 
+		<form th:action="@{/register/save-user}" method="POST" onsubmit="return validData(event)" name="form" 
 		style="max-width: 600px; margin: 0 auto;" th:object=${userObject}>
 		
 			<div class="form-group row">
